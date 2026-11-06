@@ -1,0 +1,22 @@
+/* Custom CSS Tambahan untuk Mempercantik Tampilan Tailwind */
+
+/* Styling Gradient Halus untuk Header */
+.hero-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+}
+
+/* Efek kartu melayang saat kursor mendekat */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+    border-color: #cbd5e1;
+}
+
+/* Kustomisasi scrollbar halus */
+html {
+    scroll-behavior: smooth;
+}

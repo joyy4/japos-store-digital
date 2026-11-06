@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japos Store - Katalog Produk Lengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Konfigurasi PWA agar bisa di-install di HP -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <!-- Top Banner Countdown -->
+    <div class="bg-gradient-to-r from-orange-600 to-amber-600 text-white text-center py-2.5 text-sm font-semibold shadow-md">
+        🔥 Promo Spesial Berakhir Dalam: <span id="countdown" class="underline tracking-wider font-bold"></span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-extrabold text-blue-600 tracking-tight">Japos<span class="text-slate-800">Store</span></h1>
+            <div class="space-x-6 text-sm font-medium">
+                <a href="#" class="text-blue-600 hover:text-blue-700 transition">Beranda</a>
+                <a href="#katalog" class="hover:text-blue-600 transition">Kategori Katalog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-16 px-6 text-center shadow-inner">
+        <div class="max-w-3xl mx-auto space-y-4">
+            <span class="bg-white/15 backdrop-blur border border-white/20 text-blue-100 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block">Pusat Belanja Japos Store</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">Pilih Kategori Katalog & Temukan Puluhan Produk Terbaik</h2>
+            <p class="text-blue-100 text-sm md:text-base max-w-xl mx-auto">Klik salah satu kategori di bawah untuk melihat daftar lengkap produknya dan pesan langsung via WhatsApp.</p>
+        </div>
+    </header>
+
+    <!-- 3 Kategori Utama Katalog -->
+    <main id="katalog" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-2">Katalog Pilihan</h3>
+            <p class="text-slate-500 text-sm">Silakan pilih kategori untuk melihat semua produk yang tersedia.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Kategori 1: Gadget -->
+            <div onclick="openCategoryModal('Gadget')" class="card-hover bg-white rounded-3xl shadow-sm border border-slate-200/80 p-8 text-center cursor-pointer flex flex-col items-center justify-between space-y-4">
+                <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-2xl font-bold">📱</div>
+                <div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">Kategori Gadget & Aksesoris</h4>
+                    <p class="text-slate-500 text-sm">Tersedia 30+ pilihan smartphone, case, dan perlengkapan gadget lainnya.</p>
+                </div>
+                <span class="text-orange-600 font-semibold text-sm underline">Lihat Semua Produk (30+) &rarr;</span>
+            </div>
+
+            <!-- Kategori 2: Software -->
+            <div onclick="openCategoryModal('Software')" class="card-hover bg-white rounded-3xl shadow-sm border border-slate-200/80 p-8 text-center cursor-pointer flex flex-col items-center justify-between space-y-4">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-bold">💻</div>
+                <div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">Kategori Software & Tools</h4>
+                    <p class="text-slate-500 text-sm">Tersedia 30+ tools digital, lisensi web, dan aplikasi produktivitas.</p>
+                </div>
+                <span class="text-blue-600 font-semibold text-sm underline">Lihat Semua Produk (30+) &rarr;</span>
+            </div>
+
+            <!-- Kategori 3: E-Book -->
+            <div onclick="openCategoryModal('E-Book')" class="card-hover bg-white rounded-3xl shadow-sm border border-slate-200/80 p-8 text-center cursor-pointer flex flex-col items-center justify-between space-y-4">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold">📚</div>
+                <div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">Kategori E-Book & Kursus</h4>
+                    <p class="text-slate-500 text-sm">Tersedia 30+ panduan bisnis online, programming, dan digital marketing.</p>
+                </div>
+                <span class="text-emerald-600 font-semibold text-sm underline">Lihat Semua Produk (30+) &rarr;</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Popup Daftar Produk Lengkap -->
+    <div id="productModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            <!-- Header Modal -->
+            <div class="p-6 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+                <div>
+                    <h3 id="modalTitle" class="text-2xl font-extrabold text-slate-800">Daftar Produk</h3>
+                    <p class="text-xs text-slate-500 mt-1">Pilih produk di bawah untuk langsung memesan ke WhatsApp Japos Store.</p>
+                </div>
+                <button onclick="closeModal()" class="w-10 h-10 bg-slate-200 hover:bg-slate-300 rounded-full font-bold flex items-center justify-center text-slate-700 transition cursor-pointer">✕</button>
+            </div>
+            <!-- Body Daftar Produk -->
+            <div id="modalProductList" class="p-6 overflow-y-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-h-[65vh]">
+                <!-- Data produk dimuat otomatis via script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs mt-16 border-t border-slate-800">
+        <p>&copy; 2026 Japos Store. Dibangun dengan HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
